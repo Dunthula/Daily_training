@@ -1,0 +1,82 @@
+1) i/p = [(1,2), (3,4), (6,7)] and o/p =[(5,2), (5,4), (5,7)]. Implement it using two functions by calling only one function
+
+def missingnum(l1):
+    l2 = []
+    for i in l1:
+        l2.append(i[0])
+        l2.append(i[1])
+    for i in l2:
+        if l2[i] != l2[i+1] -1 :
+            a = l2[i] + 1
+            break
+    out = finaloout(a,l1)
+    return out
+
+def finaloout(a,b):
+    l3 = []
+    for i in b:
+        l3.append((a,i[1]))
+    return l3
+
+def main():
+    l1 = [(1,2),(3,4),(5,6),(8,9)]
+    print("Final output is : ", missingnum(l1))
+    
+if __name__ == "__main__":
+    main()
+------------------------------------------------------------------------------------------------------------------
+
+2)Print the start date of the year and last day of the previous month
+
+from datetime import datetime
+from datetime import date
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
+now = datetime.now()
+startdate_yr = date((now - relativedelta(days = 1)).year, 1, 1)
+enddate_pm = now - relativedelta(days = now.day)
+print("Start date of the year is : " + str(startdate_yr))
+print("End date of the previous month is : " + str(enddate_pm.strftime("%x")))
+
+------------------------------------------------------------------------------------------------------------------
+
+3)Print last frinday's date and next friday's date:
+
+from datetime import datetime
+from datetime import date
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
+now = datetime.now()
+pf = now - timedelta(days = now.weekday()) - relativedelta(days = 4)
+nf = now - timedelta(days = now.weekday()) + relativedelta(days = 3)
+print("Last friday's date is : " + str(pf))
+print("Next friday's date is : " + str(nf))
+
+
+------------------------------------------------------------------------------------------------------------------
+
+4)Print previous month's first date and last date:
+
+from datetime import datetime
+from datetime import date
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
+now = datetime.now()
+pm = now - relativedelta(months = 1)
+pm_sd = date(pm.year, pm.month, 1)
+pm_ed = date(now.year, now.month, 1) - relativedelta(days = 1)
+print("previous months start date is : " + str(pm_sd))
+print("previous months end date is : " + str(pm_ed))
+
+------------------------------------------------------------------------------------------------------------------
+
+5)Print previous day's date:
+
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+now = datetime.now()
+pd = now - relativedelta(days = 1)
+print("previous days date is : " + str(pd.strftime("%x")))
+
+------------------------------------------------------------------------------------------------------------------
+
